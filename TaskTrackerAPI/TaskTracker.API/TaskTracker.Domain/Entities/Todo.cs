@@ -21,7 +21,7 @@ public class Todo : BaseClass
     public Guid CreatedBy { get; set; }
 
     public Guid? AssignTo { get; set; }
-    public Guid? Team { get; set; }
+    public Guid? TeamID { get; set; }
 
     [Required]
     public DateTime DueDate { get; set; }

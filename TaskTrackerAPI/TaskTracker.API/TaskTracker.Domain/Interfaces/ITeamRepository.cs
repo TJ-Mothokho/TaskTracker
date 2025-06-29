@@ -9,6 +9,6 @@ public interface ITeamRepository
     Task<Team> GetTeamByIdAsync(Guid id);
     Task<Team> AddTeamAsync(Team team);
     Task<Team> UpdateTeamAsync(Team team);
-    Task<bool> DeleteTeamAsync(Guid id);
+    Task<bool> DeleteTeamAsync(Team team);
 
 }
