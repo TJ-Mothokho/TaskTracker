@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "tqPngzbN8Fw=",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TSHIAMO\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
+    "C:\\Users\\TSHIAMO\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\TSHIAMO\\.nuget\\packages\\scalar.aspnetcore\\2.5.3\\scalar.aspnetcore.2.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}
