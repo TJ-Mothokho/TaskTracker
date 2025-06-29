@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Features\Teams\" />
+    <Folder Include="Features\Teams\Commands\" />
+    <Folder Include="Features\Teams\Queries\" />
+    <Folder Include="Features\Todos\" />
+    <Folder Include="Features\Todos\Commands\" />
+    <Folder Include="Features\Todos\Queries\" />
+    <Folder Include="Features\Users\" />
+    <Folder Include="Features\Users\Commands\" />
+    <Folder Include="Features\Users\Queries\" />
+  </ItemGroup>
+
+</Project>
