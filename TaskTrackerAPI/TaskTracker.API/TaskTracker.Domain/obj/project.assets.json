@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
+      "projectUniqueName": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
       "projectName": "TaskTracker.Domain",
-      "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
+      "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
       "packagesPath": "C:\\Users\\TSHIAMO\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\obj\\",
+      "outputPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

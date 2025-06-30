@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c+4i6Bf5RyU=",
+  "dgSpecHash": "ybDlrG5Qg0s=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
+  "projectFilePath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

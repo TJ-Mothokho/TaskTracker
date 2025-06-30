@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "32qGK/fWDsI=",
+  "dgSpecHash": "z7uYzjk1x7A=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
+  "projectFilePath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TSHIAMO\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\TSHIAMO\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

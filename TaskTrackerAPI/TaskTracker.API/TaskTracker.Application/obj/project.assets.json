@@ -671,11 +671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
+      "projectUniqueName": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
       "projectName": "TaskTracker.Application",
-      "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
+      "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
       "packagesPath": "C:\\Users\\TSHIAMO\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\obj\\",
+      "outputPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -697,8 +697,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
-              "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj"
+            "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
+              "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj"
             }
           }
         }

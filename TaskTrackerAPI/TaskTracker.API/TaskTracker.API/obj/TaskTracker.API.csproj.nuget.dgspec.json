@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj": {}
+    "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj": {
+    "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
+        "projectUniqueName": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
         "projectName": "TaskTracker.API",
-        "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
+        "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\TaskTracker.API.csproj",
         "packagesPath": "C:\\Users\\TSHIAMO\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\obj\\",
+        "outputPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj": {
-                "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj"
+              "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj": {
+                "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj"
               },
-              "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj": {
-                "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj"
+              "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj": {
+                "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj"
               }
             }
           }
@@ -106,14 +106,14 @@
         }
       }
     },
-    "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj": {
+    "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
+        "projectUniqueName": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
         "projectName": "TaskTracker.Application",
-        "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
+        "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
         "packagesPath": "C:\\Users\\TSHIAMO\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\obj\\",
+        "outputPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -135,8 +135,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
-                "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj"
+              "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
+                "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj"
               }
             }
           }
@@ -198,14 +198,14 @@
         }
       }
     },
-    "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
+    "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
+        "projectUniqueName": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
         "projectName": "TaskTracker.Domain",
-        "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
+        "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj",
         "packagesPath": "C:\\Users\\TSHIAMO\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\obj\\",
+        "outputPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -264,14 +264,14 @@
         }
       }
     },
-    "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj": {
+    "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj",
+        "projectUniqueName": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj",
         "projectName": "TaskTracker.Infrastructure",
-        "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj",
+        "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\TaskTracker.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\TSHIAMO\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\obj\\",
+        "outputPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -293,8 +293,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
-                "projectPath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj"
+              "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj": {
+                "projectPath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Domain\\TaskTracker.Domain.csproj"
               }
             }
           }

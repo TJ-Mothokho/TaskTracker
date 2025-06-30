@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KL/MfyG56k0=",
+  "dgSpecHash": "7lof4sTrK44=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
+  "projectFilePath": "C:\\TaskTracker\\TaskTracker\\TaskTrackerAPI\\TaskTracker.API\\TaskTracker.Application\\TaskTracker.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TSHIAMO\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\TSHIAMO\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
