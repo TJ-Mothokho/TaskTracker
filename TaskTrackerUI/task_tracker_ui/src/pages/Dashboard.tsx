@@ -201,7 +201,7 @@ const Dashboard = () => {
   );
 
   return (
-    <div>
+    <div className=" bg-indigo-50">
       <ProtectedRoute>
         <div className="mx-[5%] py-4">
           {/* Header */}

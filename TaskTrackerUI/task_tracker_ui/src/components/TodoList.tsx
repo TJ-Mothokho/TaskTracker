@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { Priority } from "../types";
 import type { Todo } from "../types";
+import { BinIcon, CheckIcon, EditIcon, ViewIcon, XIcon } from "./icons/Icons";
 
 interface TodoListProps {
   todos: Todo[];
@@ -201,8 +202,12 @@ const TodoList: React.FC<TodoListProps> = ({
                       )}
                       {todo.team && <span>Team: {todo.team.name}</span>}
                       <span>
-                        Created by: {todo.creator?.firstName || "Unknown"}{" "}
-                        {todo.creator?.lastName || ""}
+                        {todo.creator?.firstName ? (
+                          <p>
+                            Created by: {todo.creator?.firstName}{" "}
+                            {todo.creator?.lastName}
+                          </p>
+                        ) : null}
                       </span>
                     </div>
                   </div>
@@ -212,7 +217,7 @@ const TodoList: React.FC<TodoListProps> = ({
                       onClick={() => onView(todo)}
                       className="btn btn-ghost btn-sm"
                       title="View Details">
-                      👁️
+                      <ViewIcon /> View
                     </button>
 
                     {todo.status !== "Completed" && (
@@ -221,14 +226,14 @@ const TodoList: React.FC<TodoListProps> = ({
                           onClick={() => onEdit(todo)}
                           className="btn btn-ghost btn-sm"
                           title="Edit Task">
-                          ✏️
+                          <EditIcon /> Edit
                         </button>
 
                         <button
                           onClick={() => onArchive(todo.id)}
                           className="btn btn-success btn-sm"
                           title="Mark Complete">
-                          ✅
+                          <CheckIcon /> Mark As Complete
                         </button>
                       </>
                     )}
@@ -245,14 +250,14 @@ const TodoList: React.FC<TodoListProps> = ({
                           <button
                             onClick={() => onDelete(todo.id, false)}
                             className="text-warning">
-                            Cancel Task
+                            <XIcon /> Cancel Task
                           </button>
                         </li>
                         <li>
                           <button
                             onClick={() => onDelete(todo.id, true)}
                             className="text-error">
-                            Delete Permanently
+                            <BinIcon /> Delete Permanently
                           </button>
                         </li>
                       </ul>

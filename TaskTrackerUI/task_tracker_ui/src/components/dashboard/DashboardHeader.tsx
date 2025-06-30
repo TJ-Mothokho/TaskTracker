@@ -1,6 +1,7 @@
 // Dashboard header component with welcome message and quick actions
 import { Link } from "react-router-dom";
 import type { User } from "../../types";
+import { ArchiveIcon, PlusIcon } from "../icons/Icons";
 
 interface DashboardHeaderProps {
   currentUser: User;
@@ -34,16 +35,16 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
           onClick={onCreateTodo}
           className="btn btn-primary"
           disabled={todosLoading}>
-          + New Task
+          <PlusIcon/> New Task
         </button>
         <button
           onClick={onCreateTeam}
           className="btn btn-secondary"
           disabled={teamsLoading}>
-          + New Team
+          <PlusIcon/> New Team
         </button>
         <Link to="/archive" className="btn btn-outline">
-          📁 Archive
+          <ArchiveIcon /> Archive
         </Link>
       </div>
     </div>

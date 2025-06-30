@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../redux/authSelectors";
 import type { Team } from "../types";
+import { BinIcon, EditIcon, ViewIcon } from "./icons/Icons";
 
 interface TeamListProps {
   teams: Team[];
@@ -134,7 +135,7 @@ const TeamList: React.FC<TeamListProps> = ({
                         onClick={() => onView(team)}
                         className="btn btn-ghost btn-sm"
                         title="View Team Details">
-                        👁️
+                        <ViewIcon/> View
                       </button>
 
                       {isOwner && (
@@ -143,7 +144,7 @@ const TeamList: React.FC<TeamListProps> = ({
                             onClick={() => onEdit(team)}
                             className="btn btn-ghost btn-sm"
                             title="Edit Team">
-                            ✏️
+                            <EditIcon/> Edit
                           </button>
 
                           <div className="dropdown dropdown-end">
@@ -158,7 +159,7 @@ const TeamList: React.FC<TeamListProps> = ({
                                 <button
                                   onClick={() => onDelete(team.id)}
                                   className="text-error">
-                                  Delete Team
+                                  <BinIcon/> Delete Team
                                 </button>
                               </li>
                             </ul>

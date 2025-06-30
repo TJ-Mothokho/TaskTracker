@@ -12,6 +12,7 @@ import type {
   Team,
   User,
 } from "../../types";
+import { BinIcon, CheckIcon, XIcon } from "../icons/Icons";
 
 interface TodoModalProps {
   isOpen: boolean;
@@ -267,11 +268,15 @@ const TodoModal: React.FC<TodoModalProps> = ({
                 </span>
               </div>
               <div>
-                <span className="font-medium">Creator:</span>
-                <span className="ml-2">
-                  {todo.creator?.firstName || "Unknown"}{" "}
-                  {todo.creator?.lastName || ""}
-                </span>
+                {todo.creator?.firstName ? (
+                  <div>
+                    <span className="font-medium">Creator:</span>
+                    <span className="ml-2">
+                      {todo.creator?.firstName}{" "}
+                      {todo.creator?.lastName || ""}
+                    </span>
+                  </div>
+                ) : null}
               </div>
               {todo.assignee && (
                 <div>
@@ -296,13 +301,13 @@ const TodoModal: React.FC<TodoModalProps> = ({
                     onClick={handleArchive}
                     className="btn btn-success btn-sm"
                     disabled={loading}>
-                    Mark Complete
+                    <CheckIcon/> Mark Complete
                   </button>
                   <button
                     onClick={() => handleDelete(false)}
                     className="btn btn-warning btn-sm"
                     disabled={loading}>
-                    Cancel Task
+                    <XIcon/> Cancel Task
                   </button>
                 </>
               )}
@@ -310,7 +315,7 @@ const TodoModal: React.FC<TodoModalProps> = ({
                 onClick={() => handleDelete(true)}
                 className="btn btn-error btn-sm"
                 disabled={loading}>
-                Delete Permanently
+                <BinIcon/> Delete Permanently
               </button>
             </div>
           </div>

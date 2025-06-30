@@ -1,6 +1,7 @@
 // Tasks tab content with task list and actions
 import TodoList from "../TodoList";
 import type { Todo } from "../../types";
+import { PlusIcon } from "../icons/Icons";
 
 interface TasksTabProps {
   activeTodos: Todo[];
@@ -30,7 +31,7 @@ const TasksTab: React.FC<TasksTabProps> = ({
             onClick={onCreateTodo}
             className="btn btn-primary btn-sm"
             disabled={loading}>
-            + Add Task
+            <PlusIcon/> Add Task
           </button>
         </div>
         <TodoList

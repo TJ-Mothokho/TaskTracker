@@ -1,3 +1,5 @@
+import { ChartIcon, TaskIcon, TeamIcon } from "../icons/Icons";
+
 // Dashboard tabs navigation component
 interface DashboardTabsProps {
   activeTab: "overview" | "todos" | "teams";
@@ -15,19 +17,26 @@ const DashboardTabs: React.FC<DashboardTabsProps> = ({
   return (
     <div className="tabs tabs-bordered mb-6">
       <button
-        className={`tab tab-lg ${activeTab === "overview" ? "tab-active" : ""}`}
+        className={`tab mx-1 text-black tab-lg bg-indigo-200 rounded-2xl ${
+          activeTab === "overview" ? "tab-active bg-indigo-300" : ""
+        }`}
         onClick={() => onTabChange("overview")}>
-        📊 Overview
+        <ChartIcon /> Overview
       </button>
       <button
-        className={`tab tab-lg ${activeTab === "todos" ? "tab-active" : ""}`}
+        className={`tab mx-1 text-black tab-l bg-indigo-200 rounded-2xl ${
+          activeTab === "todos" ? "tab-active bg-indigo-300" : ""
+        }`}
         onClick={() => onTabChange("todos")}>
-        ✅ Tasks ({activeTodosCount})
+        <TaskIcon /> Tasks ({activeTodosCount})
       </button>
       <button
-        className={`tab tab-lg ${activeTab === "teams" ? "tab-active" : ""}`}
+        className={`tab mx-1 text-black tab-lg bg-indigo-200 rounded-2xl ${
+          activeTab === "teams" ? "tab-active bg-indigo-300" : ""
+        }`}
         onClick={() => onTabChange("teams")}>
-        👥 Teams ({teamsCount})
+        <TeamIcon />
+        Teams ({teamsCount})
       </button>
     </div>
   );

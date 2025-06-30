@@ -1,6 +1,7 @@
 // Teams tab content with team list and actions
 import TeamList from "../TeamList";
 import type { Team } from "../../types";
+import { PlusIcon } from "../icons/Icons";
 
 interface TeamsTabProps {
   teams: Team[];
@@ -28,7 +29,7 @@ const TeamsTab: React.FC<TeamsTabProps> = ({
             onClick={onCreateTeam}
             className="btn btn-secondary btn-sm"
             disabled={loading}>
-            + Add Team
+            <PlusIcon/> Add Team
           </button>
         </div>
         <TeamList

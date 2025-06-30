@@ -10,6 +10,7 @@ import type {
   UpdateTeamRequest,
   User,
 } from "../../types";
+import { BinIcon } from "../icons/Icons";
 
 interface TeamModalProps {
   isOpen: boolean;
@@ -278,7 +279,7 @@ const TeamModal: React.FC<TeamModalProps> = ({
                   onClick={handleDelete}
                   className="btn btn-error btn-sm"
                   disabled={loading}>
-                  Delete Team
+                  <BinIcon/> Delete Team
                 </button>
               </div>
             )}
