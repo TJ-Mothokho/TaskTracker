@@ -10,3 +10,15 @@ D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\De
 D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\refint\TaskTracker.Domain.dll
 D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.pdb
 D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\ref\TaskTracker.Domain.dll
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\bin\Debug\net9.0\TaskTracker.Domain.deps.json
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\bin\Debug\net9.0\TaskTracker.Domain.dll
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\bin\Debug\net9.0\TaskTracker.Domain.pdb
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.AssemblyInfoInputs.cache
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.AssemblyInfo.cs
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.csproj.CoreCompileInputs.cache
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.sourcelink.json
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.dll
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\refint\TaskTracker.Domain.dll
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\TaskTracker.Domain.pdb
+C:\TaskTracker\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Domain\obj\Debug\net9.0\ref\TaskTracker.Domain.dll
