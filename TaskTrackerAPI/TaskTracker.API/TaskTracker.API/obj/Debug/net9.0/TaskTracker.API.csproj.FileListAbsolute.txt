@@ -98,3 +98,4 @@ D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.API\bin\Debug
 D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.API\bin\Debug\net9.0\TaskTracker.Application.pdb
 D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.API\bin\Debug\net9.0\BCrypt.Net-Next.dll
 D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
