@@ -19,7 +19,10 @@ public class TeamRepository : ITeamRepository
         await _context.Teams.AddAsync(team);
         await _context.SaveChangesAsync();
 
-        var addedTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Name == team.Name && t.CreatedAt == team.CreatedAt);
+        var addedTeam = await _context.Teams
+            .Include(t => t.User) // Include owner
+            .Include(t => t.Members) // Include members
+            .FirstOrDefaultAsync(t => t.Name == team.Name && t.CreatedAt == team.CreatedAt);
 
         if (addedTeam is null)
         {
@@ -46,7 +49,10 @@ public class TeamRepository : ITeamRepository
 
     public async Task<Team> GetTeamByIdAsync(Guid id)
     {
-        var team = await _context.Teams.FirstOrDefaultAsync(t => t.Id == id);
+        var team = await _context.Teams
+            .Include(t => t.User) // Include owner
+            .Include(t => t.Members) // Include members
+            .FirstOrDefaultAsync(t => t.Id == id);
 
         if (team is null)
         {
@@ -58,9 +64,11 @@ public class TeamRepository : ITeamRepository
 
     public async Task<IEnumerable<Team>> GetTeamsAsync(Guid userID)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userID);
-
-        var teams = await _context.Teams.Where(u => u.Owner == userID || u.User == user).ToListAsync();
+        var teams = await _context.Teams
+            .Include(t => t.User) // Include owner
+            .Include(t => t.Members) // Include members
+            .Where(t => t.Owner == userID || t.Members.Any(m => m.Id == userID))
+            .ToListAsync();
 
         if (teams is null)
         {
@@ -75,7 +83,10 @@ public class TeamRepository : ITeamRepository
         _context.Teams.Update(team);
         await _context.SaveChangesAsync();
 
-        var updatedTeam = await _context.Teams.FirstOrDefaultAsync(t => t.Id == team.Id);
+        var updatedTeam = await _context.Teams
+            .Include(t => t.User) // Include owner
+            .Include(t => t.Members) // Include members
+            .FirstOrDefaultAsync(t => t.Id == team.Id);
 
         if (updatedTeam is null)
         {

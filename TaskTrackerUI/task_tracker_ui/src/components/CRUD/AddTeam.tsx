@@ -1,6 +1,11 @@
+// Updated AddTeam component using the new TeamsService and hooks
+// Integrates with the actual API and provides proper team creation functionality
+
 import { useState, type FormEvent } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../redux/authSelectors";
+import { TeamsService } from "../../services/teamsService";
+import type { CreateTeamRequest } from "../../types";
 
 const AddTeam = () => {
   const [name, setName] = useState("");
@@ -19,29 +24,28 @@ const AddTeam = () => {
     setIsSubmitting(true);
 
     try {
-      // Convert comma-separated emails to array and get dummy user IDs
+      // Convert comma-separated emails to array
       const emailArray = memberEmails
         .split(",")
         .map((email) => email.trim())
         .filter((email) => email.length > 0);
 
-      // Generate dummy user IDs for the emails (you'll replace this with actual API call)
-      const dummyMemberIds = emailArray.map(
-        (_, index) => `dummy-user-id-${index + 1}`
-      );
-
-      const teamData = {
+      // For now, we'll create the team without member IDs since we don't have user lookup
+      // In a real implementation, you'd look up users by email to get their IDs
+      const teamData: CreateTeamRequest = {
         name: name.trim(),
-        owner: currentUser.id, // Get owner ID from Redux
-        members: dummyMemberIds, // Array of user IDs
+        ownerId: currentUser.id,
+        // memberIds: undefined // We'll handle member addition separately
       };
 
-      console.log("Team data to be sent to API:", teamData);
+      console.log("Creating team with data:", teamData);
+      console.log("Member emails to add:", emailArray);
 
-      // TODO: Replace with actual API call
-      // await createTeamAPI(teamData);
+      // Create the team
+      const newTeam = await TeamsService.createTeam(teamData);
+      console.log("Team created successfully:", newTeam);
 
-      alert("Team would be created with this data (check console)");
+      alert(`Team "${name}" created successfully!`);
 
       // Reset form
       setName("");
@@ -50,6 +54,9 @@ const AddTeam = () => {
       // Close modal
       const modal = document.getElementById("my_modal_1") as HTMLDialogElement;
       if (modal) modal.close();
+
+      // Refresh the page to show the new team
+      window.location.reload();
     } catch (error) {
       console.error("Error creating team:", error);
       alert("Error creating team. Please try again.");
@@ -75,7 +82,8 @@ const AddTeam = () => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">Add a Team!</h3>
           <p className="text-sm text-gray-600 mb-4">
-            Owner: {currentUser.fullName} ({currentUser.email})
+            Owner: {currentUser.firstName} {currentUser.lastName} (
+            {currentUser.email})
           </p>
           <div>
             <form onSubmit={handleAddTeam}>
@@ -100,6 +108,9 @@ const AddTeam = () => {
                   onChange={(e) => setMemberEmails(e.target.value)}
                   placeholder="user1@example.com, user2@example.com"
                 />
+                <div className="text-sm text-gray-500 mb-4">
+                  Note: Members will need to be added after team creation
+                </div>
 
                 <div className="flex justify-end">
                   <button

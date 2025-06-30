@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { Provider } from 'react-redux'
 import { store } from './redux/store.ts'
+import './utils/testUtils' // Import test utilities for debugging
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

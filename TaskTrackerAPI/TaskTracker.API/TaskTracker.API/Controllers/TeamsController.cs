@@ -35,6 +35,15 @@ public class TeamsController : ControllerBase
     }
 
     /// <summary>
+    /// Test endpoint to verify the controller is working
+    /// </summary>
+    [HttpGet("test")]
+    public ActionResult<string> Test()
+    {
+        return Ok("TeamsController is working!");
+    }
+
+    /// <summary>
     /// Create a new team with specified owner and optional members
     /// POST /api/teams
     /// </summary>

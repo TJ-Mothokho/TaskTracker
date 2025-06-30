@@ -37,6 +37,15 @@ public class TodosController : ControllerBase
     }
 
     /// <summary>
+    /// Test endpoint to verify the controller is working
+    /// </summary>
+    [HttpGet("test")]
+    public ActionResult<string> Test()
+    {
+        return Ok("TodosController is working!");
+    }
+
+    /// <summary>
     /// Create a new todo/task with specified details
     /// POST /api/todos
     /// </summary>
