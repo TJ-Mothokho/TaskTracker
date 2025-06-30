@@ -212,8 +212,8 @@ const TeamModal: React.FC<TeamModalProps> = ({
             <div>
               <h4 className="font-semibold text-xl">{team.name}</h4>
               <p className="text-gray-600 mt-1">
-                Owner: {team.owner?.firstName || 'Unknown'} {team.owner?.lastName || ''} (
-                {team.owner?.email || 'No email'})
+                Owner: {team.owner?.firstName || "Unknown"}{" "}
+                {team.owner?.lastName || ""} ({team.owner?.email || "No email"})
               </p>
             </div>
 

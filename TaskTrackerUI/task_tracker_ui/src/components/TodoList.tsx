@@ -201,8 +201,8 @@ const TodoList: React.FC<TodoListProps> = ({
                       )}
                       {todo.team && <span>Team: {todo.team.name}</span>}
                       <span>
-                        Created by: {todo.creator?.firstName || 'Unknown'}{" "}
-                        {todo.creator?.lastName || ''}
+                        Created by: {todo.creator?.firstName || "Unknown"}{" "}
+                        {todo.creator?.lastName || ""}
                       </span>
                     </div>
                   </div>

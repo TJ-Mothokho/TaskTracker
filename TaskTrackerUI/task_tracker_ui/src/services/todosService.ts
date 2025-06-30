@@ -16,9 +16,7 @@ export class TodosService {
    */
   static async testConnection(): Promise<string> {
     try {
-      console.log(`Testing connection to: ${API_BASE}/test`);
       const response = await apiClient.get<string>(`${API_BASE}/test`);
-      console.log("Test response:", response.data);
       return response.data;
     } catch (error) {
       console.error("Test connection failed:", error);
@@ -53,11 +51,9 @@ export class TodosService {
    */
   static async getTodosCreatedByUser(userId: string): Promise<Todo[]> {
     try {
-      console.log(`Making request to: ${API_BASE}/created-by/${userId}`);
       const response = await apiClient.get<Todo[]>(
         `${API_BASE}/created-by/${userId}`
       );
-      console.log("Todos created by user response:", response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching todos created by user:", error);

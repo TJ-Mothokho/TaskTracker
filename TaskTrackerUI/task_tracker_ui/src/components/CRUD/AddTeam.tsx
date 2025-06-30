@@ -24,12 +24,6 @@ const AddTeam = () => {
     setIsSubmitting(true);
 
     try {
-      // Convert comma-separated emails to array
-      const emailArray = memberEmails
-        .split(",")
-        .map((email) => email.trim())
-        .filter((email) => email.length > 0);
-
       // For now, we'll create the team without member IDs since we don't have user lookup
       // In a real implementation, you'd look up users by email to get their IDs
       const teamData: CreateTeamRequest = {
@@ -38,12 +32,8 @@ const AddTeam = () => {
         // memberIds: undefined // We'll handle member addition separately
       };
 
-      console.log("Creating team with data:", teamData);
-      console.log("Member emails to add:", emailArray);
-
       // Create the team
-      const newTeam = await TeamsService.createTeam(teamData);
-      console.log("Team created successfully:", newTeam);
+      await TeamsService.createTeam(teamData);
 
       alert(`Team "${name}" created successfully!`);
 

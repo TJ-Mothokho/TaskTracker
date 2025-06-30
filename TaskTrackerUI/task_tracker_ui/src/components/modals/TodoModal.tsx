@@ -269,7 +269,8 @@ const TodoModal: React.FC<TodoModalProps> = ({
               <div>
                 <span className="font-medium">Creator:</span>
                 <span className="ml-2">
-                  {todo.creator?.firstName || 'Unknown'} {todo.creator?.lastName || ''}
+                  {todo.creator?.firstName || "Unknown"}{" "}
+                  {todo.creator?.lastName || ""}
                 </span>
               </div>
               {todo.assignee && (

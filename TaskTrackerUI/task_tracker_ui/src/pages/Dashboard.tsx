@@ -2,15 +2,18 @@
 // Integrates todos, teams, statistics, and archive functionality
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "../components";
-import BarChart from "../components/BarChart";
 import Stats from "../components/Stats";
-import TodoList from "../components/TodoList";
-import TeamList from "../components/TeamList";
-import TodoModal from "../components/modals/TodoModal";
-import TeamModal from "../components/modals/TeamModal";
+import {
+  DashboardHeader,
+  DashboardTabs,
+  DashboardModals,
+  ErrorAlert,
+  OverviewTab,
+  TasksTab,
+  TeamsTab,
+} from "../components/dashboard";
 import { useTodos } from "../hooks/useTodos";
 import { useTeams } from "../hooks/useTeams";
 import { selectCurrentUser } from "../redux/authSelectors";
@@ -202,56 +205,16 @@ const Dashboard = () => {
       <ProtectedRoute>
         <div className="mx-[5%] py-4">
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <h1 className="text-3xl font-bold">
-                Welcome back, {currentUser.firstName}!
-              </h1>
-              <p className="text-gray-600 mt-1">
-                Here's what's happening with your tasks and teams
-              </p>
-              {/* Debug info */}
-              <div className="text-xs text-gray-500 mt-1">
-                User ID: {currentUser.id} (Length: {currentUser.id.length})
-                {/* Check if it's a valid GUID format */}- Valid GUID:{" "}
-                {/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-                  currentUser.id
-                )
-                  ? "Yes"
-                  : "No"}
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="flex gap-3">
-              <button
-                onClick={handleCreateTodo}
-                className="btn btn-primary"
-                disabled={todosLoading}>
-                + New Task
-              </button>
-              <button
-                onClick={handleCreateTeam}
-                className="btn btn-secondary"
-                disabled={teamsLoading}>
-                + New Team
-              </button>
-              <Link to="/archive" className="btn btn-outline">
-                📁 Archive
-              </Link>
-            </div>
-          </div>
+          <DashboardHeader
+            currentUser={currentUser}
+            onCreateTodo={handleCreateTodo}
+            onCreateTeam={handleCreateTeam}
+            todosLoading={todosLoading}
+            teamsLoading={teamsLoading}
+          />
 
           {/* Error Messages */}
-          {(todosError || teamsError) && (
-            <div className="alert alert-error mb-4">
-              <span>
-                {todosError && `Tasks: ${todosError}`}
-                {todosError && teamsError && " | "}
-                {teamsError && `Teams: ${teamsError}`}
-              </span>
-            </div>
-          )}
+          <ErrorAlert todosError={todosError} teamsError={teamsError} />
 
           {/* Stats Cards */}
           <Stats
@@ -261,214 +224,73 @@ const Dashboard = () => {
           />
 
           {/* Tabs */}
-          <div className="tabs tabs-bordered mb-6">
-            <button
-              className={`tab tab-lg ${
-                activeTab === "overview" ? "tab-active" : ""
-              }`}
-              onClick={() => setActiveTab("overview")}>
-              📊 Overview
-            </button>
-            <button
-              className={`tab tab-lg ${
-                activeTab === "todos" ? "tab-active" : ""
-              }`}
-              onClick={() => setActiveTab("todos")}>
-              ✅ Tasks ({activeTodos.length})
-            </button>
-            <button
-              className={`tab tab-lg ${
-                activeTab === "teams" ? "tab-active" : ""
-              }`}
-              onClick={() => setActiveTab("teams")}>
-              👥 Teams ({teams.length})
-            </button>
-          </div>
+          <DashboardTabs
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            activeTodosCount={activeTodos.length}
+            teamsCount={teams.length}
+          />
 
           {/* Tab Content */}
           {activeTab === "overview" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Priority Chart */}
-              <div className="card bg-base-100 shadow-lg">
-                <div className="card-body">
-                  <h2 className="card-title">Tasks by Priority</h2>
-                  <div className="h-64 flex justify-center items-center">
-                    <BarChart
-                      high={priorityStats.high}
-                      medium={priorityStats.medium}
-                      low={priorityStats.low}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="space-y-4">
-                {/* Recent Activity */}
-                <div className="card bg-base-100 shadow-lg">
-                  <div className="card-body">
-                    <h2 className="card-title">Quick Stats</h2>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span>Active Tasks:</span>
-                        <span className="font-semibold">
-                          {activeTodos.length}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Completed Tasks:</span>
-                        <span className="font-semibold text-success">
-                          {completedTodos.length}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Teams Owned:</span>
-                        <span className="font-semibold">
-                          {ownedTeams.length}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Teams Member:</span>
-                        <span className="font-semibold">
-                          {memberTeams.length}
-                        </span>
-                      </div>
-                      <div className="divider"></div>
-                      <div className="flex justify-between">
-                        <span>High Priority:</span>
-                        <span className="font-semibold text-error">
-                          {priorityStats.high}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Medium Priority:</span>
-                        <span className="font-semibold text-warning">
-                          {priorityStats.medium}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Low Priority:</span>
-                        <span className="font-semibold text-success">
-                          {priorityStats.low}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Recent Tasks */}
-                <div className="card bg-base-100 shadow-lg">
-                  <div className="card-body">
-                    <h2 className="card-title">Recent Tasks</h2>
-                    <div className="space-y-2">
-                      {activeTodos.slice(0, 5).map((todo) => (
-                        <div
-                          key={todo.id}
-                          className="flex justify-between items-center p-2 hover:bg-base-200 rounded cursor-pointer"
-                          onClick={() => handleViewTodo(todo)}>
-                          <span className="truncate">{todo.title}</span>
-                          <span
-                            className={`badge badge-sm ${
-                              todo.priority === 0
-                                ? "badge-error"
-                                : todo.priority === 1
-                                ? "badge-warning"
-                                : "badge-success"
-                            }`}>
-                            {todo.priority === 0
-                              ? "High"
-                              : todo.priority === 1
-                              ? "Medium"
-                              : "Low"}
-                          </span>
-                        </div>
-                      ))}
-                      {activeTodos.length === 0 && (
-                        <p className="text-gray-500 text-center py-4">
-                          No active tasks
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <OverviewTab
+              activeTodos={activeTodos}
+              completedTodos={completedTodos}
+              ownedTeamsCount={ownedTeams.length}
+              memberTeamsCount={memberTeams.length}
+              priorityStats={priorityStats}
+              onViewTodo={handleViewTodo}
+            />
           )}
 
           {activeTab === "todos" && (
-            <div className="card bg-base-100 shadow-lg">
-              <div className="card-body">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title">My Tasks</h2>
-                  <button
-                    onClick={handleCreateTodo}
-                    className="btn btn-primary btn-sm"
-                    disabled={todosLoading}>
-                    + Add Task
-                  </button>
-                </div>
-                <TodoList
-                  todos={activeTodos}
-                  onView={handleViewTodo}
-                  onEdit={handleEditTodo}
-                  onDelete={handleDeleteTodo}
-                  onArchive={handleArchiveTodo}
-                  loading={todosLoading}
-                />
-              </div>
-            </div>
+            <TasksTab
+              activeTodos={activeTodos}
+              onCreateTodo={handleCreateTodo}
+              onViewTodo={handleViewTodo}
+              onEditTodo={handleEditTodo}
+              onDeleteTodo={handleDeleteTodo}
+              onArchiveTodo={handleArchiveTodo}
+              loading={todosLoading}
+            />
           )}
 
           {activeTab === "teams" && (
-            <div className="card bg-base-100 shadow-lg">
-              <div className="card-body">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="card-title">My Teams</h2>
-                  <button
-                    onClick={handleCreateTeam}
-                    className="btn btn-secondary btn-sm"
-                    disabled={teamsLoading}>
-                    + Add Team
-                  </button>
-                </div>
-                <TeamList
-                  teams={teams}
-                  onView={handleViewTeam}
-                  onEdit={handleEditTeam}
-                  onDelete={handleDeleteTeam}
-                  loading={teamsLoading}
-                />
-              </div>
-            </div>
+            <TeamsTab
+              teams={teams}
+              onCreateTeam={handleCreateTeam}
+              onViewTeam={handleViewTeam}
+              onEditTeam={handleEditTeam}
+              onDeleteTeam={handleDeleteTeam}
+              loading={teamsLoading}
+            />
           )}
         </div>
 
-        {/* Todo Modal */}
-        <TodoModal
-          isOpen={todoModalOpen}
-          onClose={() => setTodoModalOpen(false)}
-          todo={selectedTodo || undefined}
-          mode={todoModalMode}
-          onSave={handleSaveTodo}
-          onDelete={handleDeleteTodo}
-          onArchive={handleArchiveTodo}
+        {/* Modals */}
+        <DashboardModals
+          // Todo Modal props
+          todoModalOpen={todoModalOpen}
+          selectedTodo={selectedTodo}
+          todoModalMode={todoModalMode}
+          onCloseTodoModal={() => setTodoModalOpen(false)}
+          onSaveTodo={handleSaveTodo}
+          onDeleteTodo={handleDeleteTodo}
+          onArchiveTodo={handleArchiveTodo}
+          // Team Modal props
+          teamModalOpen={teamModalOpen}
+          selectedTeam={selectedTeam}
+          teamModalMode={teamModalMode}
+          onCloseTeamModal={() => setTeamModalOpen(false)}
+          onSaveTeam={handleSaveTeam}
+          onDeleteTeam={handleDeleteTeam}
+          onAddTeamMember={handleAddTeamMember}
+          onRemoveTeamMember={handleRemoveTeamMember}
+          // Shared data
           teams={teams}
-          users={allUsers}
-          loading={todosLoading}
-        />
-
-        {/* Team Modal */}
-        <TeamModal
-          isOpen={teamModalOpen}
-          onClose={() => setTeamModalOpen(false)}
-          team={selectedTeam || undefined}
-          mode={teamModalMode}
-          onSave={handleSaveTeam}
-          onDelete={handleDeleteTeam}
-          onAddMember={handleAddTeamMember}
-          onRemoveMember={handleRemoveTeamMember}
-          availableUsers={allUsers}
-          loading={teamsLoading}
+          allUsers={allUsers}
+          todosLoading={todosLoading}
+          teamsLoading={teamsLoading}
         />
       </ProtectedRoute>
     </div>

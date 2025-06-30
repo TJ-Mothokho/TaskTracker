@@ -105,8 +105,9 @@ const TeamList: React.FC<TeamListProps> = ({
 
                       <div className="space-y-1 text-sm text-gray-600">
                         <p>
-                          Owner: {team.owner?.firstName || 'Unknown'} {team.owner?.lastName || ''} (
-                          {team.owner?.email || 'No email'})
+                          Owner: {team.owner?.firstName || "Unknown"}{" "}
+                          {team.owner?.lastName || ""} (
+                          {team.owner?.email || "No email"})
                         </p>
                         <p>Members: {team.members.length}</p>
                         {team.members.length > 0 && (

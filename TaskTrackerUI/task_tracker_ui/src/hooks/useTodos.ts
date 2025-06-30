@@ -71,27 +71,20 @@ export const useTodos = (): UseTodosReturn => {
    */
   const fetchTodos = useCallback(async () => {
     if (!currentUser.id) {
-      console.log("No current user ID available");
       return;
     }
 
-    console.log("Fetching todos for user ID:", currentUser.id);
     setLoading(true);
     setError(null);
 
     try {
-      // Test the connection first
-      const testResult = await TodosService.testConnection();
-      console.log("Todos service test result:", testResult);
+      await TodosService.testConnection();
 
       // Fetch both created and assigned todos
       const [createdTodos, assignedTodos] = await Promise.all([
         TodosService.getTodosCreatedByUser(currentUser.id),
         TodosService.getTodosAssignedToUser(currentUser.id),
       ]);
-
-      console.log("Created todos response:", createdTodos);
-      console.log("Assigned todos response:", assignedTodos);
 
       // Merge and deduplicate todos
       const allTodos = [...createdTodos];
@@ -103,7 +96,6 @@ export const useTodos = (): UseTodosReturn => {
 
       setTodos(allTodos);
     } catch (err) {
-      console.error("Detailed error fetching todos:", err);
       const errorMessage =
         err instanceof Error ? err.message : "Failed to fetch todos";
       setError(errorMessage);
@@ -126,7 +118,6 @@ export const useTodos = (): UseTodosReturn => {
         return newTodo;
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to create todo");
-        console.error("Error creating todo:", err);
         return null;
       } finally {
         setCreating(false);
@@ -154,7 +145,6 @@ export const useTodos = (): UseTodosReturn => {
         return updatedTodo;
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to update todo");
-        console.error("Error updating todo:", err);
         return null;
       } finally {
         setUpdating(false);
@@ -184,7 +174,6 @@ export const useTodos = (): UseTodosReturn => {
         return true;
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to delete todo");
-        console.error("Error deleting todo:", err);
         return false;
       } finally {
         setDeleting(false);
@@ -208,7 +197,6 @@ export const useTodos = (): UseTodosReturn => {
       return true;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to archive todo");
-      console.error("Error archiving todo:", err);
       return false;
     } finally {
       setUpdating(false);

@@ -101,11 +101,8 @@ const Register = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      console.log("Form validation failed");
       return;
     }
-
-    console.log(`Attempting registration with email: ${email}`);
 
     try {
       const result = await dispatch(
@@ -118,14 +115,10 @@ const Register = () => {
         })
       );
 
-      console.log("Register dispatch result:", result);
-
       if (registerUser.fulfilled.match(result)) {
-        console.log("Registration successful, user data:", result.payload);
         showSuccess("Registration successful! Welcome to TaskTracker!");
         // Navigation will be handled by the useEffect above
       } else {
-        console.log("Registration failed:", result.payload);
         showError((result.payload as string) || "Registration failed");
       }
     } catch (error) {

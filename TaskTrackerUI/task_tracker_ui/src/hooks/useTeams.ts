@@ -49,44 +49,22 @@ export const useTeams = (): UseTeamsReturn => {
       team.members.some((member) => member.id === currentUser.id)
   );
 
-  // Debug logging
-  console.log("useTeams Debug:", {
-    totalTeams: teams.length,
-    currentUserId: currentUser.id,
-    ownedCount: ownedTeams.length,
-    memberCount: memberTeams.length,
-    teams: teams.map(team => ({
-      id: team.id,
-      name: team.name,
-      ownerId: team.owner?.id,
-      memberCount: team.members.length,
-      memberIds: team.members.map(m => m.id)
-    }))
-  });
-
   /**
    * Fetch all teams for the current user (both owned and member of)
    */
   const fetchTeams = useCallback(async () => {
     if (!currentUser.id) {
-      console.log("No current user ID available for teams");
       return;
     }
 
-    console.log("Fetching teams for user ID:", currentUser.id);
     setLoading(true);
     setError(null);
 
     try {
-      // Test the connection first
-      const testResult = await TeamsService.testConnection();
-      console.log("Teams service test result:", testResult);
-
+      await TeamsService.testConnection();
       const userTeams = await TeamsService.getUserTeams(currentUser.id);
-      console.log("Teams response:", userTeams);
       setTeams(userTeams);
     } catch (err) {
-      console.error("Detailed error fetching teams:", err);
       const errorMessage =
         err instanceof Error ? err.message : "Failed to fetch teams";
       setError(errorMessage);
@@ -109,7 +87,6 @@ export const useTeams = (): UseTeamsReturn => {
         return newTeam;
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to create team");
-        console.error("Error creating team:", err);
         return null;
       } finally {
         setCreating(false);
@@ -137,7 +114,6 @@ export const useTeams = (): UseTeamsReturn => {
         return updatedTeam;
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to update team");
-        console.error("Error updating team:", err);
         return null;
       } finally {
         setUpdating(false);
@@ -159,7 +135,6 @@ export const useTeams = (): UseTeamsReturn => {
       return true;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to delete team");
-      console.error("Error deleting team:", err);
       return false;
     } finally {
       setDeleting(false);
@@ -181,7 +156,6 @@ export const useTeams = (): UseTeamsReturn => {
         return true;
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to add member");
-        console.error("Error adding member:", err);
         return false;
       } finally {
         setUpdating(false);
@@ -207,7 +181,6 @@ export const useTeams = (): UseTeamsReturn => {
         setError(
           err instanceof Error ? err.message : "Failed to remove member"
         );
-        console.error("Error removing member:", err);
         return false;
       } finally {
         setUpdating(false);

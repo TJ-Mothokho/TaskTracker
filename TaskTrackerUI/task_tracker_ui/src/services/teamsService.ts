@@ -16,9 +16,7 @@ export class TeamsService {
    */
   static async testConnection(): Promise<string> {
     try {
-      console.log(`Testing connection to: ${API_BASE}/test`);
       const response = await apiClient.get<string>(`${API_BASE}/test`);
-      console.log("Test response:", response.data);
       return response.data;
     } catch (error) {
       console.error("Test connection failed:", error);
@@ -53,18 +51,9 @@ export class TeamsService {
    */
   static async getUserTeams(userId: string): Promise<Team[]> {
     try {
-      console.log(`Making request to: ${API_BASE}/user/${userId}`);
       const response = await apiClient.get<Team[]>(
         `${API_BASE}/user/${userId}`
       );
-      console.log("User teams response:", response.data);
-      console.log("Teams detailed:", response.data.map(team => ({
-        id: team.id,
-        name: team.name,
-        owner: team.owner,
-        membersCount: team.members?.length || 0,
-        members: team.members
-      })));
       return response.data;
     } catch (error) {
       console.error("Error fetching user teams:", error);

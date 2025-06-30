@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { ProtectedRoute } from "../components";
+import { ArchiveHeader, ArchiveActions } from "../components/archive";
 import TodoModal from "../components/modals/TodoModal";
 import { useTodos } from "../hooks/useTodos";
 import type { Todo, UpdateTodoRequest, CreateTodoRequest } from "../types";
@@ -76,6 +77,15 @@ const Archive: React.FC = () => {
     }
   };
 
+  const handleBulkDelete = async (todos: Todo[]) => {
+    try {
+      await Promise.all(todos.map((task) => handleDeleteTodo(task.id, true)));
+    } catch (error) {
+      console.error("Error bulk deleting todos:", error);
+      alert("Failed to delete some tasks. Please try again.");
+    }
+  };
+
   if (error) {
     return (
       <div className="mx-[10%] mt-8">
@@ -93,68 +103,13 @@ const Archive: React.FC = () => {
       <ProtectedRoute>
         <div className="space-y-6">
           {/* Header */}
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold">Task Archive</h1>
-              <p className="text-gray-600 mt-1">
-                View and manage your completed and cancelled tasks
-              </p>
-            </div>
-            <div className="stats shadow">
-              <div className="stat">
-                <div className="stat-title">Archived Tasks</div>
-                <div className="stat-value text-2xl">
-                  {archivedTodos.length}
-                </div>
-                <div className="stat-desc">
-                  {archivedTodos.filter((t) => t.status === "Completed").length}{" "}
-                  completed,{" "}
-                  {archivedTodos.filter((t) => t.status === "Cancelled").length}{" "}
-                  cancelled
-                </div>
-              </div>
-            </div>
-          </div>
+          <ArchiveHeader archivedTodos={archivedTodos} />
 
           {/* Archive Actions */}
-          <div className="card bg-base-100 shadow-sm border">
-            <div className="card-body p-4">
-              <h2 className="card-title text-lg mb-3">Archive Actions</h2>
-              <div className="flex flex-wrap gap-3">
-                <button
-                  className="btn btn-outline btn-sm"
-                  onClick={() => window.location.reload()}>
-                  🔄 Refresh Archive
-                </button>
-                <div
-                  className="tooltip"
-                  data-tip="Permanently delete all cancelled tasks">
-                  <button
-                    className="btn btn-error btn-outline btn-sm"
-                    onClick={() => {
-                      const cancelledTasks = archivedTodos.filter(
-                        (t) => t.status === "Cancelled"
-                      );
-                      if (cancelledTasks.length === 0) {
-                        alert("No cancelled tasks to clean up");
-                        return;
-                      }
-                      if (
-                        window.confirm(
-                          `Permanently delete ${cancelledTasks.length} cancelled tasks? This cannot be undone.`
-                        )
-                      ) {
-                        cancelledTasks.forEach((task) =>
-                          handleDeleteTodo(task.id, true)
-                        );
-                      }
-                    }}>
-                    🗑️ Clean Up Cancelled
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ArchiveActions
+            archivedTodos={archivedTodos}
+            onBulkDelete={handleBulkDelete}
+          />
 
           {/* Archive List with Custom Actions */}
           <div className="card bg-base-100 shadow-sm">
