@@ -193,8 +193,9 @@ const Register = () => {
               <div className="text-center lg:text-left">
                 <h1 className="text-5xl font-bold">Join us today!</h1>
                 <p className="py-6">
-                  Welcome to Team Tracker App created by Tshiamo Mothokho! 
-                  Create your account to start managing your tasks and teams efficiently.
+                  Welcome to Team Tracker App created by Tshiamo Mothokho!
+                  Create your account to start managing your tasks and teams
+                  efficiently.
                 </p>
               </div>
               <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -318,7 +319,9 @@ const Register = () => {
                     </fieldset>
                   </form>
                   <div className="divider">OR</div>
-                  <div className="text-center mt-4">Already have an account?</div>
+                  <div className="text-center mt-4">
+                    Already have an account?
+                  </div>
                   <button
                     onClick={() => navigate("/login")}
                     className="btn btn-outline w-full">

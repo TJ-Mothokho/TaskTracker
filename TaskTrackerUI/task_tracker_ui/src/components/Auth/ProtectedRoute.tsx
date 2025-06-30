@@ -4,6 +4,8 @@ import {
   selectIsAuthenticated,
   selectAuthLoading,
 } from "../../redux/authSelectors";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -27,7 +29,13 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return <Navigate to="/login" replace />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <NavBar />
+      {children}
+      <Footer />
+    </>
+  );
 };
 
 export default ProtectedRoute;

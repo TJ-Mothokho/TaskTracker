@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/authSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 
-
 const Logout = () => {
   const dispatch = useAppDispatch();
-  const { firstName, token } = useAppSelector((state) => state.auth);
+  const { email, token } = useAppSelector((state) => state.auth);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear(); // ⬅️ Clears all stored keys (token, refreshToken, etc.)
@@ -19,8 +18,8 @@ const Logout = () => {
   if (!token) return null;
 
   return (
-    <div>
-      <p>Hello, {firstName} 👋</p>
+    <div className="flex items-center gap-3">
+      <p className="hidden md:block">Hello, {email}</p>
       <button
         onClick={handleLogout}
         className="bg-red-500 text-white px-4 py-2 rounded">

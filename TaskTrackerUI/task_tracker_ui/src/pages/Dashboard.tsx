@@ -1,23 +1,15 @@
 
-import { useNavigate } from 'react-router-dom';
-import Logout from '../components/Auth/Logout';
+// import { useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../components';
+import Stats from '../components/Stats';
 
 const Dashboard = () => {
-    const token = localStorage.getItem('token');
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    const handleLogin = () => {
-        navigate("/login");
-    }
   return (
     <div>
       <ProtectedRoute>
-        Dashboard: {token}
-        <button className="btn btn-active mx-5" onClick={handleLogin}>
-          login
-        </button>
-        <Logout />
+        <Stats/>
       </ProtectedRoute>
     </div>
   );

@@ -28,7 +28,11 @@ const PublicRoute = ({ children, redirectTo = "/" }: PublicRouteProps) => {
     return <Navigate to={redirectTo} replace />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+    </>
+  );
 };
 
 export default PublicRoute;
