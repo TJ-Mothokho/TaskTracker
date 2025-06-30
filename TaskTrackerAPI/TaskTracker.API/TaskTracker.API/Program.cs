@@ -10,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
+// Configure OpenAPI/Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
@@ -49,7 +53,11 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
+// Only use HTTPS redirection in production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthentication(); // Add this before UseAuthorization
 app.UseAuthorization();

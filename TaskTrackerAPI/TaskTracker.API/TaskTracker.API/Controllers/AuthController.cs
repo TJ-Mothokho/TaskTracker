@@ -6,8 +6,8 @@ using TaskTracker.Application.Features.Auth;
 
 namespace TaskTracker.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -111,8 +111,7 @@ namespace TaskTracker.API.Controllers
         public ActionResult Logout()
         {
             // For now, just return success
-            // In a full implementation, you might want to blacklist the token
-            // or remove the refresh token from the database
+            // remove the refresh token from the database
             return Ok(new { message = "Logged out successfully" });
         }
     }
