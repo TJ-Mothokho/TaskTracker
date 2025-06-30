@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "../components";
-import Stats from "../components/Stats";
+// import Stats from "../components/Stats";
 import {
   DashboardHeader,
   DashboardTabs,
@@ -33,8 +33,7 @@ const Dashboard = () => {
   const {
     activeTodos,
     completedTodos,
-    todosCreated,
-    todosAssigned,
+    
     loading: todosLoading,
     error: todosError,
     createTodo,
@@ -217,11 +216,11 @@ const Dashboard = () => {
           <ErrorAlert todosError={todosError} teamsError={teamsError} />
 
           {/* Stats Cards */}
-          <Stats
+          {/* <Stats
             numOfTasksCreated={todosCreated.length}
             numOfTasksAssigned={todosAssigned.length}
             numOfTeams={teams.length}
-          />
+          /> */}
 
           {/* Tabs */}
           <DashboardTabs
