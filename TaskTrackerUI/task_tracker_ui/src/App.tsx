@@ -1,12 +1,15 @@
 import './App.css'
+import Routers from './components/Router'
 
 function App() {
 
   return (
     <>
-      <h1 className='text-5xl text-center'>Hello World</h1>
+
+        <Routers />
+      
     </>
-  )
+  );
 }
 
 export default App

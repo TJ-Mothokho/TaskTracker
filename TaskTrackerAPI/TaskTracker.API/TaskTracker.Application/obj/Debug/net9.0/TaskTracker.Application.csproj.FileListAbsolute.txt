@@ -1,0 +1,16 @@
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\bin\Debug\net9.0\TaskTracker.Application.deps.json
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\bin\Debug\net9.0\TaskTracker.Application.dll
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\bin\Debug\net9.0\TaskTracker.Application.pdb
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\bin\Debug\net9.0\TaskTracker.Domain.dll
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\bin\Debug\net9.0\TaskTracker.Domain.pdb
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.csproj.AssemblyReference.cache
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.AssemblyInfoInputs.cache
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.AssemblyInfo.cs
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.csproj.CoreCompileInputs.cache
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.sourcelink.json
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTrac.CBC11A5F.Up2Date
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.dll
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\refint\TaskTracker.Application.dll
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\TaskTracker.Application.pdb
+D:\Projects\TaskTracker\TaskTrackerAPI\TaskTracker.API\TaskTracker.Application\obj\Debug\net9.0\ref\TaskTracker.Application.dll
