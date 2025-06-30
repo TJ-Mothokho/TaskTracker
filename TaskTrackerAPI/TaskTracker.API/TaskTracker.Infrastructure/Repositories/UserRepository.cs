@@ -102,4 +102,26 @@ public class UserRepository : IUserRepository
 
         return updatedUser;
     }
+
+    // JWT-related methods
+    public async Task<User> UpdateRefreshTokenAsync(User user, string refreshToken, DateTime expiryTime)
+    {
+        user.RefreshToken = refreshToken;
+        user.RefreshTokenExpiryTime = expiryTime;
+        
+        _context.Update(user);
+        await _context.SaveChangesAsync();
+        
+        return user;
+    }
+
+    public async Task<bool> ValidateRefreshTokenAsync(string email, string refreshToken)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => 
+            u.Email == email && 
+            u.RefreshToken == refreshToken && 
+            u.RefreshTokenExpiryTime > DateTime.UtcNow);
+            
+        return user != null;
+    }
 }

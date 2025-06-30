@@ -12,4 +12,8 @@ public interface IUserRepository
     Task<User> AddUserAsync(User user);
     Task<User> UpdateUserAsync(User user);
     Task<bool> DeleteUserAsync(User user); //Soft Delete
+    
+    // JWT-related methods
+    Task<User> UpdateRefreshTokenAsync(User user, string refreshToken, DateTime expiryTime);
+    Task<bool> ValidateRefreshTokenAsync(string email, string refreshToken);
 }

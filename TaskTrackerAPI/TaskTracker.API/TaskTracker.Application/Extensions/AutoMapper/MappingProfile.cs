@@ -3,6 +3,7 @@ using AutoMapper;
 using TaskTracker.Application.DTOs.Teams;
 using TaskTracker.Application.DTOs.Todos;
 using TaskTracker.Application.DTOs.Users;
+using TaskTracker.Application.DTOs.Auth;
 using TaskTracker.Domain.Entities;
 
 namespace TaskTracker.Application.Extensions.AutoMapper;

@@ -1,5 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TaskTracker.Application.Extensions.AutoMapper;
+using TaskTracker.Application.Interfaces;
+using TaskTracker.Application.Services;
 
 
 namespace TaskTracker.Application.Extensions;
@@ -12,6 +14,10 @@ public static class DependencyInjection
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly)
         );
+        
+        // Register JWT Service
+        services.AddScoped<IJwtService, JwtService>();
+        
         return services;
     }
 }
