@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Teams\" />
-    <Folder Include="Features\Teams\Commands\" />
-    <Folder Include="Features\Teams\Queries\" />
-    <Folder Include="Features\Todos\" />
-    <Folder Include="Features\Todos\Commands\" />
-    <Folder Include="Features\Todos\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -69,16 +69,9 @@ export const loginUser = createAsyncThunk<
   { rejectValue: string }
 >("auth/loginUser", async (payload, { rejectWithValue }) => {
   try {
-    console.log("🔐 Attempting login with payload:", payload);
-
     const response = await apiClient.post<LoginResponse>(
       API_CONFIG.ENDPOINTS.AUTH.LOGIN,
       payload
-    );
-
-    console.log("✅ Login successful, response:", response.data);
-    console.log(
-      `🎫 Access token: ${response.data.accessToken.substring(0, 50)}...`
     );
 
     // Store tokens in localStorage for persistence
@@ -89,21 +82,12 @@ export const loginUser = createAsyncThunk<
     localStorage.setItem("lastName", response.data.user.lastName);
     localStorage.setItem("email", response.data.user.email);
 
-    console.log("💾 Stored user data in localStorage");
-
     return response.data;
   } catch (error) {
     console.error("❌ Login failed:", error);
 
     const err = error as AxiosError<{ message: string }>;
     const message = err.response?.data?.message || "Login failed";
-
-    console.error("🔍 Error details:", {
-      status: err.response?.status,
-      statusText: err.response?.statusText,
-      data: err.response?.data,
-      message: message,
-    });
 
     return rejectWithValue(message);
   }
@@ -115,16 +99,9 @@ export const registerUser = createAsyncThunk<
   { rejectValue: string }
 >("auth/registerUser", async (payload, { rejectWithValue }) => {
   try {
-    console.log("🔐 Attempting register with payload:", payload);
-
     const response = await apiClient.post<LoginResponse>(
       API_CONFIG.ENDPOINTS.AUTH.REGISTER,
       payload
-    );
-
-    console.log("✅ Register successful, response:", response.data);
-    console.log(
-      `🎫 Access token: ${response.data.accessToken.substring(0, 50)}...`
     );
 
     // Store tokens in localStorage for persistence
@@ -134,8 +111,6 @@ export const registerUser = createAsyncThunk<
     localStorage.setItem("firstName", response.data.user.firstName);
     localStorage.setItem("lastName", response.data.user.lastName);
     localStorage.setItem("email", response.data.user.email);
-
-    console.log("💾 Stored user data in localStorage");
 
     return response.data;
   } catch (error) {

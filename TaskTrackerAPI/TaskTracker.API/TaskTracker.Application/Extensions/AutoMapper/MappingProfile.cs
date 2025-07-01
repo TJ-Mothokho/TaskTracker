@@ -18,7 +18,9 @@ public class MappingProfile : Profile
             CreateMap<UpdateUserRequestDto, User>();
 
             // Team
-            CreateMap<Team, TeamResponseDto>();
+            CreateMap<Team, TeamResponseDto>()
+                .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.Members, opt => opt.MapFrom(src => src.Members));
             CreateMap<CreateTeamRequestDto, Team>();
             CreateMap<UpdateTeamRequestDto, Team>();
 

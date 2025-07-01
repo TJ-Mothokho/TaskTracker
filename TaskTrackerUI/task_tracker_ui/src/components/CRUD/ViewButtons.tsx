@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ViewButtons = () => {
   return (
     <div>
@@ -20,6 +18,6 @@ const ViewButtons = () => {
       </div>
     </div>
   );
-}
+};
 
-export default ViewButtons
+export default ViewButtons;

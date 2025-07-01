@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer sm:footer-horizontal footer-center bg-neutral-200 text-base-content p-4">
+      <footer className="footer sm:footer-horizontal footer-center bg-white text-base-content p-4">
         <aside>
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by

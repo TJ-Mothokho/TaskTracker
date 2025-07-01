@@ -24,6 +24,8 @@ const Login = () => {
 
   // Redirect if already authenticated
   useEffect(() => {
+    setEmail("");
+    setPassword("");
     if (isAuthenticated) {
       navigate("/");
     }
@@ -31,6 +33,8 @@ const Login = () => {
 
   // Clear errors when component mounts
   useEffect(() => {
+    setEmail("");
+    setPassword("");
     dispatch(clearError());
   }, [dispatch]);
 
@@ -62,23 +66,16 @@ const Login = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      console.log("Form validation failed");
       return;
     }
-
-    console.log(`Attempting login with email: ${email}`);
 
     try {
       const result = await dispatch(loginUser({ email, password }));
 
-      console.log("Login dispatch result:", result);
-
       if (loginUser.fulfilled.match(result)) {
-        console.log("Login successful, user data:", result.payload);
         showSuccess("Login successful! Redirecting...");
         // Navigation will be handled by the useEffect above
       } else {
-        console.log("Login failed:", result.payload);
         showError((result.payload as string) || "Login failed");
       }
     } catch (error) {
