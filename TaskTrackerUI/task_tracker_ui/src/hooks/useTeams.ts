@@ -29,6 +29,7 @@ interface UseTeamsReturn {
   deleteTeam: (teamId: string) => Promise<boolean>;
   addMember: (teamId: string, userId: string) => Promise<boolean>;
   removeMember: (teamId: string, userId: string) => Promise<boolean>;
+  addMembersByEmail: (teamId: string, emails: string[]) => Promise<boolean>;
 }
 
 export const useTeams = (): UseTeamsReturn => {
@@ -189,6 +190,29 @@ export const useTeams = (): UseTeamsReturn => {
     [fetchTeams]
   );
 
+  /**
+   * Add multiple members to a team using their email addresses
+   */
+  const addMembersByEmail = useCallback(
+    async (teamId: string, emails: string[]): Promise<boolean> => {
+      setUpdating(true);
+      setError(null);
+
+      try {
+        await TeamsService.addMembersByEmail(teamId, emails);
+        // Refresh the specific team data
+        await fetchTeams();
+        return true;
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to add members");
+        return false;
+      } finally {
+        setUpdating(false);
+      }
+    },
+    [fetchTeams]
+  );
+
   // Fetch teams when component mounts or user changes
   useEffect(() => {
     fetchTeams();
@@ -216,5 +240,6 @@ export const useTeams = (): UseTeamsReturn => {
     deleteTeam,
     addMember,
     removeMember,
+    addMembersByEmail,
   };
 };

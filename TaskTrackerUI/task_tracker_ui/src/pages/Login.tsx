@@ -24,6 +24,8 @@ const Login = () => {
 
   // Redirect if already authenticated
   useEffect(() => {
+    setEmail("");
+    setPassword("");
     if (isAuthenticated) {
       navigate("/");
     }
@@ -31,6 +33,8 @@ const Login = () => {
 
   // Clear errors when component mounts
   useEffect(() => {
+    setEmail("");
+    setPassword("");
     dispatch(clearError());
   }, [dispatch]);
 

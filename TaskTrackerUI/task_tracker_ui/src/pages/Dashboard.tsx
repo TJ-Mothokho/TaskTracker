@@ -33,7 +33,7 @@ const Dashboard = () => {
   const {
     activeTodos,
     completedTodos,
-    
+
     loading: todosLoading,
     error: todosError,
     createTodo,
@@ -54,6 +54,7 @@ const Dashboard = () => {
     deleteTeam,
     addMember,
     removeMember,
+    addMembersByEmail,
   } = useTeams();
 
   // UI State
@@ -190,6 +191,15 @@ const Dashboard = () => {
     }
   };
 
+  const handleAddMembersByEmail = async (teamId: string, emails: string[]) => {
+    try {
+      await addMembersByEmail(teamId, emails);
+    } catch (error) {
+      console.error("Error adding team members by email:", error);
+      alert("Failed to add team members. Please try again.");
+    }
+  };
+
   // Get unique users from teams for user selection
   const allUsers = Array.from(
     new Map(
@@ -285,6 +295,7 @@ const Dashboard = () => {
           onDeleteTeam={handleDeleteTeam}
           onAddTeamMember={handleAddTeamMember}
           onRemoveTeamMember={handleRemoveTeamMember}
+          onAddMembersByEmail={handleAddMembersByEmail}
           // Shared data
           teams={teams}
           allUsers={allUsers}

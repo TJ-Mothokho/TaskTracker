@@ -21,6 +21,7 @@ interface TeamModalProps {
   onDelete?: (teamId: string) => Promise<void>;
   onAddMember?: (teamId: string, userId: string) => Promise<void>;
   onRemoveMember?: (teamId: string, userId: string) => Promise<void>;
+  onAddMembersByEmail?: (teamId: string, emails: string[]) => Promise<void>;
   availableUsers?: User[];
   loading?: boolean;
 }
@@ -34,6 +35,7 @@ const TeamModal: React.FC<TeamModalProps> = ({
   onDelete,
   onAddMember,
   onRemoveMember,
+  onAddMembersByEmail,
   availableUsers = [],
   loading = false,
 }) => {
@@ -48,6 +50,8 @@ const TeamModal: React.FC<TeamModalProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [newMemberEmail, setNewMemberEmail] = useState("");
+  const [bulkEmails, setBulkEmails] = useState("");
+  const [showBulkAdd, setShowBulkAdd] = useState(false);
 
   // Initialize form data when team changes
   useEffect(() => {
@@ -64,6 +68,8 @@ const TeamModal: React.FC<TeamModalProps> = ({
     }
     setErrors({});
     setNewMemberEmail("");
+    setBulkEmails("");
+    setShowBulkAdd(false);
   }, [team]);
 
   const handleInputChange = (field: string, value: string) => {
@@ -186,6 +192,38 @@ const TeamModal: React.FC<TeamModalProps> = ({
     }
   };
 
+  const handleAddMembersByEmail = async () => {
+    if (!team || !onAddMembersByEmail || !bulkEmails.trim()) return;
+
+    // Parse emails from comma-separated or newline-separated input
+    const emailList = bulkEmails
+      .split(/[,\n]/)
+      .map((email) => email.trim())
+      .filter((email) => email.length > 0);
+
+    if (emailList.length === 0) {
+      alert("Please enter at least one email address");
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const invalidEmails = emailList.filter((email) => !emailRegex.test(email));
+
+    if (invalidEmails.length > 0) {
+      alert(`Invalid email addresses: ${invalidEmails.join(", ")}`);
+      return;
+    }
+
+    try {
+      await onAddMembersByEmail(team.id, emailList);
+      setBulkEmails("");
+      setShowBulkAdd(false);
+    } catch (error) {
+      console.error("Error adding members by email:", error);
+    }
+  };
+
   const isTeamOwner = team?.owner.id === currentUser.id;
 
   if (!isOpen) return null;
@@ -224,21 +262,71 @@ const TeamModal: React.FC<TeamModalProps> = ({
                   Team Members ({team.members.length})
                 </h5>
                 {isTeamOwner && (
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      className="input input-bordered input-sm"
-                      placeholder="Enter member email"
-                      value={newMemberEmail}
-                      onChange={(e) => setNewMemberEmail(e.target.value)}
-                      disabled={loading}
-                    />
-                    <button
-                      onClick={handleAddMember}
-                      className="btn btn-primary btn-sm"
-                      disabled={loading || !newMemberEmail.trim()}>
-                      Add Member
-                    </button>
+                  <div className="flex gap-2 flex-col">
+                    {/* Single member add */}
+                    <div className="flex gap-2">
+                      <input
+                        type="email"
+                        className="input input-bordered input-sm"
+                        placeholder="Enter member email"
+                        value={newMemberEmail}
+                        onChange={(e) => setNewMemberEmail(e.target.value)}
+                        disabled={loading}
+                      />
+                      <button
+                        onClick={handleAddMember}
+                        className="btn btn-primary btn-sm"
+                        disabled={loading || !newMemberEmail.trim()}>
+                        Add Member
+                      </button>
+                    </div>
+
+                    {/* Bulk add toggle */}
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setShowBulkAdd(!showBulkAdd)}
+                        className="btn btn-outline btn-sm"
+                        disabled={loading}>
+                        {showBulkAdd ? "Hide" : "Add Multiple Members"}
+                      </button>
+                    </div>
+
+                    {/* Bulk add section */}
+                    {showBulkAdd && (
+                      <div className="space-y-2 p-3 bg-base-100 rounded-lg border">
+                        <label className="label">
+                          <span className="label-text font-medium">
+                            Add Multiple Members
+                          </span>
+                          <span className="label-text-alt">
+                            Comma or line separated emails
+                          </span>
+                        </label>
+                        <textarea
+                          className="textarea textarea-bordered w-full h-24"
+                          placeholder="user1@example.com, user2@example.com
+user3@example.com
+user4@example.com"
+                          value={bulkEmails}
+                          onChange={(e) => setBulkEmails(e.target.value)}
+                          disabled={loading}
+                        />
+                        <div className="flex gap-2 justify-end">
+                          <button
+                            onClick={() => setShowBulkAdd(false)}
+                            className="btn btn-ghost btn-sm"
+                            disabled={loading}>
+                            Cancel
+                          </button>
+                          <button
+                            onClick={handleAddMembersByEmail}
+                            className="btn btn-primary btn-sm"
+                            disabled={loading || !bulkEmails.trim()}>
+                            Add Members
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -279,7 +367,7 @@ const TeamModal: React.FC<TeamModalProps> = ({
                   onClick={handleDelete}
                   className="btn btn-error btn-sm"
                   disabled={loading}>
-                  <BinIcon/> Delete Team
+                  <BinIcon /> Delete Team
                 </button>
               </div>
             )}
@@ -325,6 +413,64 @@ const TeamModal: React.FC<TeamModalProps> = ({
                   Owner: {currentUser.firstName} {currentUser.lastName} (
                   {currentUser.email})
                 </div>
+              </div>
+            )}
+
+            {mode === "edit" && team && (
+              <div>
+                <label className="label">
+                  <span className="label-text">Team Members (Bulk Add)</span>
+                  <span className="label-text-alt">
+                    Comma or newline-separated emails
+                  </span>
+                </label>
+                <textarea
+                  className="textarea textarea-bordered w-full h-24"
+                  value={bulkEmails}
+                  onChange={(e) => setBulkEmails(e.target.value)}
+                  placeholder="user1@example.com, user2@example.com"
+                  disabled={isSubmitting}
+                />
+                <div className="flex gap-2 mt-2">
+                  <button
+                    onClick={() => setShowBulkAdd(!showBulkAdd)}
+                    className="btn btn-secondary btn-sm">
+                    {showBulkAdd ? "Hide" : "Show"} Bulk Add
+                  </button>
+                  <button
+                    onClick={handleAddMembersByEmail}
+                    className="btn btn-primary btn-sm"
+                    disabled={loading || !bulkEmails.trim()}>
+                    Add Members
+                  </button>
+                </div>
+
+                {showBulkAdd && (
+                  <div className="mt-4 p-3 bg-base-200 rounded-lg">
+                    <h6 className="font-medium text-md mb-2">
+                      Bulk Add Members by Email
+                    </h6>
+                    <p className="text-sm text-gray-700 mb-2">
+                      Enter email addresses separated by commas or new lines.
+                      This will add multiple members to the team at once.
+                    </p>
+                    <textarea
+                      className="textarea textarea-bordered w-full h-24"
+                      value={bulkEmails}
+                      onChange={(e) => setBulkEmails(e.target.value)}
+                      placeholder="user1@example.com, user2@example.com"
+                      disabled={isSubmitting}
+                    />
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        onClick={handleAddMembersByEmail}
+                        className="btn btn-primary btn-sm"
+                        disabled={loading || !bulkEmails.trim()}>
+                        Add Members
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 

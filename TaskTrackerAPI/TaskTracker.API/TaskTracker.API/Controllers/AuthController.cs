@@ -17,9 +17,6 @@ namespace TaskTracker.API.Controllers
             _mediator = mediator;
         }
 
-        /// <summary>
-        /// Register a new user
-        /// </summary>
         [HttpPost("register")]
         public async Task<ActionResult<LoginResponseDto>> Register([FromBody] CreateUserRequestDto request)
         {
@@ -46,9 +43,6 @@ namespace TaskTracker.API.Controllers
             }
         }
 
-        /// <summary>
-        /// Login user
-        /// </summary>
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponseDto>> Login([FromBody] LoginRequestDto request)
         {
@@ -77,9 +71,6 @@ namespace TaskTracker.API.Controllers
             }
         }
 
-        /// <summary>
-        /// Refresh access token using refresh token
-        /// </summary>
         [HttpPost("refresh-token")]
         public async Task<ActionResult<RefreshTokenResponseDto>> RefreshToken([FromBody] RefreshTokenRequestDto request)
         {
@@ -104,14 +95,9 @@ namespace TaskTracker.API.Controllers
             }
         }
 
-        /// <summary>
-        /// Logout user (invalidate refresh token)
-        /// </summary>
         [HttpPost("logout")]
         public ActionResult Logout()
         {
-            // For now, just return success
-            // remove the refresh token from the database
             return Ok(new { message = "Logged out successfully" });
         }
     }

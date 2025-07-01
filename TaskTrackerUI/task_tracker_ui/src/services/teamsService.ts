@@ -111,6 +111,19 @@ export class TeamsService {
   }
 
   /**
+   * Add multiple members to a team using their email addresses
+   * @param teamId - The team's unique identifier
+   * @param emails - Array of email addresses to add as members
+   * @returns Promise with success status
+   */
+  static async addMembersByEmail(
+    teamId: string,
+    emails: string[]
+  ): Promise<void> {
+    await apiClient.post(`${API_BASE}/${teamId}/members/bulk`, { emails });
+  }
+
+  /**
    * Get dashboard statistics for teams
    * @param userId - The user's unique identifier
    * @returns Promise with team count

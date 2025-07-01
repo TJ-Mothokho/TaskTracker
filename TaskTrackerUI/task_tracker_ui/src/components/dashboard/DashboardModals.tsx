@@ -34,6 +34,7 @@ interface DashboardModalsProps {
   onDeleteTeam: (teamId: string) => Promise<void>;
   onAddTeamMember: (teamId: string, userId: string) => Promise<void>;
   onRemoveTeamMember: (teamId: string, userId: string) => Promise<void>;
+  onAddMembersByEmail: (teamId: string, emails: string[]) => Promise<void>;
 
   // Shared data
   teams: Team[];
@@ -61,6 +62,7 @@ const DashboardModals: React.FC<DashboardModalsProps> = ({
   onDeleteTeam,
   onAddTeamMember,
   onRemoveTeamMember,
+  onAddMembersByEmail,
 
   // Shared data
   teams,
@@ -94,6 +96,7 @@ const DashboardModals: React.FC<DashboardModalsProps> = ({
         onDelete={onDeleteTeam}
         onAddMember={onAddTeamMember}
         onRemoveMember={onRemoveTeamMember}
+        onAddMembersByEmail={onAddMembersByEmail}
         availableUsers={allUsers}
         loading={teamsLoading}
       />
